@@ -1,0 +1,255 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<head lang="en">
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <title>YooDeal -  Coupon, Deals & Quotation CMS</title>
+    <!-- Framework CSS -->
+    <link rel="stylesheet" href="assets/blueprint-css/screen.css" type="text/css" media="screen, projection">
+    <link rel="stylesheet" href="assets/blueprint-css/print.css" type="text/css" media="print">
+    <!--[if lt IE 8]><link rel="stylesheet" href="assets/blueprint-css/ie.css" type="text/css" media="screen, projection"><![endif]-->
+    <link rel="stylesheet" href="assets/blueprint-css/plugins/fancy-type/screen.css" type="text/css" media="screen, projection">
+    <style type="text/css" media="screen">
+        p, table, hr, .box { margin-bottom:25px; }
+        .box p { margin-bottom:10px; }
+    </style>
+</head>
+
+
+<body>
+    <div class="container">
+
+        <h3 class="center alt">&ldquo;YooDeal -  Coupon, Deals & Quotation CMS&rdquo; Documentation for <strong>interface's users</strong> by &ldquo;Adrien Vinet&rdquo; v1.1.0</h3>
+
+        <hr>
+
+        <h1 class="center">&ldquo;YooDeal -  Coupon, Deals & Quotation CMS&rdquo;</h1>
+
+        <div class="borderTop">
+            <div class="span-6 colborder info prepend-1">
+                <p class="prepend-top">
+                    <strong>
+                        Created at : 03/07/2017<br>
+                        Updated at : 27/01/2019<br>
+                        By: Devtoo Apps<br>
+                        Email: <a href="mailto:adrien@devtoo.fr">adrien@devtoo.fr</a>
+                    </strong>
+                </p>
+            </div><!-- end div .span-6 -->		
+
+            <div class="span-12 last">
+                <p class="prepend-top append-0">Thank you for purchasing my CMS. If you have any questions that are beyond the scope of this help file, please feel free to email via this contact form <a href="https://themeforest.net/user/devtoo">here</a>. Thanks so much!</p>
+            </div>
+        </div><!-- end div .borderTop -->
+
+        <hr>
+
+        <h2 id="toc" class="alt">Table of Contents</h2>
+        <ol class="alpha">
+            <li><a href="#add_files">Add files</a></li>
+            <li><a href="#install">One click installation</a></li>
+            <li><a href="#file_config">Finalise file configuration</a></li>
+            <li><a href="#login_admin">Login admin interface</a></li>
+            <li><a href="#configure">Configure your website</a></li>
+            <li><a href="#add_photo">Add photos</a></li>
+            <li><a href="#add_categories">Add categories</a></li>
+            <li><a href="#add_store">Add store</a></li>
+            <li><a href="#add_deal">Add deal</a></li>
+            <li><a href="#language">++ Language Edition</a></li>
+            <li><a href="#currency">++ Currency Edition</a></li>
+        </ol>
+        <h2 id="toc" class="alt">Questions & Answers</h2>
+        <ol class="alpha">
+            <li><a href="#error_1">Password Admin after installation</a></li>
+            <li><a href="#error_2">My URLs don't works</a></li>
+        </ol>
+
+        <hr>
+
+        <h3 id="add_files"><strong>A) Add files on your FTP</strong> - <a href="#toc">top</a></h3>
+
+        <p>Copy ALL files in "www" folder, and upload in your ftp "www" folder.</p>
+        <p>You can use a software like Filezilla to do that.</p>
+
+        <hr>
+
+        <h3 id="install"><strong>B) One click installation</strong> - <a href="#toc">top</a></h3>
+
+        <p>Go to the url of your "www" folder.</p>
+        <p>Fill in the fields to configure your database connection and your admin access.</p>
+        <img src="assets/images/cap1.png" alt="fields" />
+
+        <hr>
+
+        <h3 id="file_config"><strong>C) Finalise file configuration</strong> - <a href="#toc">top</a></h3>
+
+        <h5>Database access</h5>
+        <p>If your database connection is ok, one click installation ask you to create a new file in "www/application/config/database.php".</p>
+
+        <h5>Config file</h5>
+        <p>The CMS is complex, and it need some API access for everything work good.</p>
+
+        <p>Open the file "www/application/config/config.php" and go to the end of this file, to the section "CONFIGURE THESE VARIABLES". Everything is explained in comments from this point to the end of the "config.php".</p>
+
+        <p>Some variables can be empty, but 3 API access are NEEDED for everything work good :</p>
+
+        <p>Recaptacha API Keys : <a href="https://www.google.com/recaptcha">Click here to create an access</a></p>
+        <p>Google MAP API Key : <a href="https://developers.google.com/maps/documentation/javascript/get-api-key">Click here to create an access</a></p>
+        <p>Paypal API Keys : <a href="https://www.paypal.com/re/webapps/mpp/merchant">Connect to your Paypal account and ask for API access in your account</a></p>
+
+        <h5 id='htaccess'>Htaccess file</h5>
+        <h3 style='color: red'>You need to activate URL Rewriting on your server. </h3>
+        <p>Most of web servers already hosted already have URL Rewriting installed, but if not, please refer to you server's manager.</p>
+        <p>Make sure you uploaded ".htaccess" file in your "www" folder.</p>
+        <p>Depending on your server, insert one of these two codes into this file. The first one runs on most servers, if not, try the second one.</p>
+        <pre>
+        DirectoryIndex index.php
+        RewriteEngine on
+        RewriteCond $1 !^(index\.php|images|css|js|robots\.txt|favicon\.ico)
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteCond %{REQUEST_FILENAME} !-d
+        RewriteRule ^(.*)$ ./index.php/$1 [L,QSA] 
+
+        AddDefaultCharset UTF-8
+        </pre>
+        <p>Or try this one</p>
+        <pre>
+        RewriteEngine On
+        RewriteBase /
+        RewriteCond %{REQUEST_FILENAME} -s [OR]
+        RewriteCond %{REQUEST_FILENAME} -l [OR]
+        RewriteCond %{REQUEST_FILENAME} -d
+        RewriteRule ^.*$ - [NC,L]
+        RewriteRule ^.*$ index.php [NC,L]
+
+        AddDefaultCharset UTF-8
+        </pre>
+
+        <hr>
+
+        <h3 id="login_admin"><strong>D) Login to admin interface</strong> - <a href="#toc">top</a></h3>
+
+        <p>Click on "Store login" in the header of your website, and log in with your login and password specified during installation.</p>
+
+        <hr>
+
+        <h3 id="configure"><strong>E) Configure your website</strong> - <a href="#toc">top</a></h3>
+
+        <p>Click on "administration menu" and "configuration". Configure everything for your own business.</p>
+        <img src="assets/images/cap2.png" alt="fields" />
+
+        <hr>
+        <br /><br />
+        <h3 id="add_photo"><strong>F) Add some pics</strong> - <a href="#toc">top</a></h3>
+
+        <p>Click on "administration" > "medias".</p>
+        
+        <p>The CMS work with photos provided by admin. This allows you to keep a website clean even by opening the possibility of creating a deal to anyone.</p>
+        
+        <p>These photos will be selectable for deal creation or category creation (in admin).</p>
+
+        <img src="assets/images/cap3.png" alt="fields" />
+        <br /><br />
+        <h3 id="add_categories"><strong>G) Add your categories</strong> - <a href="#toc">top</a></h3>
+
+        <p>Click on "administration" > "categories".</p>
+        
+        <p>Delete first all subcategories, and all categories, after create your own categories, and after subcategories.</p>
+        
+        <p>In a next update, you will be able to edit and move categories and subcategories. ;)</p>
+
+        <img src="assets/images/cap4.png" alt="fields" />
+        <hr>
+        <br /><br />
+        <h3 id="add_store"><strong>H) Add a store</strong> - <a href="#toc">top</a></h3>
+        
+        <p>Click on "administration" > "stores".</p>
+
+        <p>After installation, you will have an example store, you can edit it or delete and create your own store.</p>
+        
+        <p>If you want to edit it, click on "store view", you will be logged as a store owner. You can do evrything in the store like a store owner. If you want to reconnect to admin after that, you need to logout the store and go to "store login" (with your admin login).</p>
+
+        <p>If you want to add new store, you can just click on "add new store" :)</p>
+        
+        <img src="assets/images/cap5.png" alt="fields" />
+        <hr>
+        <br /><br />
+        <h3 id="add_deal"><strong>I) Add an offer</strong> - <a href="#toc">top</a></h3>
+        
+        <p>Click on "administration" > "stores".</p>
+
+        <p>You can add an offer for any store in administration interface. Click on "add an offer", and follow steps like an store owner.</p>
+        
+        <img src="assets/images/cap6.png" alt="fields" />
+        <hr>
+        <br /><br />
+        <h3 id="language"><strong>J) Language & texts edition</strong> - <a href="#toc">top</a></h3>
+        
+        <p>The website use a CMS section in administration interface for some contents on the website.</p>
+
+        <p>But if you want to edit more text on your website, please go to the folder "www/application/language/english" and check any files to find the text you want to edit (a good software to do that if "Netbeans", with the "search" function, you can save a lot of time. ;)</p>
+       
+        <hr>
+        <br /><br />
+        <h3 id="currency"><strong>K) Change currency</strong> - <a href="#toc">top</a></h3>
+        
+        <p>You can change the currency in this file : "www/application/config.php"</p>
+
+        <p>Go to the end of this file, and change these lines</p>
+        <pre>
+            // Configure currency
+            $config['currency'] = '€';
+            $config['currency_code'] = 'EUR';
+            $config['currency_full'] = 'euro';
+        </pre>
+        <hr>
+        <br /><br />
+        
+        <h3 id="add_deal"><strong>-- Update V1.1.0</strong> - <a href="#toc">top</a></h3>
+        <ul>
+            <li>- Bug fix</li>
+            <li>- Language fix</li>
+            <li>- Add Bank (IBAN / SWIFT) information for professionnals (Pro account > Edit informations)</li>
+            <li>- Add "Store informations" popup in admin (Admin account > Administration > Stores > button "store informations"</li>
+        </ul>
+        <p>
+            If you want to add manualy this update on previous project : <br /> <br />
+            1 - add SQL file "/www/update_1.1.0.sql" in your database <br />
+            2 - find comment "Update V1.1.0" in source code and add it manualy<br />
+        </p>
+        
+        <hr>
+        
+        <br />
+        
+        
+        <h2 id="errors">Errors & Bugs fixes</h2>
+        <hr>
+        
+        <h3 id="error_1"><strong>V1.1.0 - Bug password admin</strong> - <a href="#toc">top</a></h3>
+        <p>A bug was raised by an user, when you finish your install, you will not be able to connect to your admin, just insert this line in your SQL console in PHPMYADMIN (change the "MY_NEW_PASSWORD" to YOUR password) :</p>
+        <pre>UPDATE `users_pro` SET password= SHA1(MD5("MY_NEW_PASSWORD")) WHERE id=1</pre>
+        <p>Sorry for this bug, we'll fixe it soon</p>
+        <hr>
+        
+        <h3 id="error_2"><strong>My URLs don't work</strong> - <a href="#toc">top</a></h3>
+        <p>If you are facing an issue when you navigate in your website but your home page work, it's because you have a problem with URL Rewriting, <a href="#htaccess">please refer to this part of the doc</a>. </p><p>A tutorial <a href="https://www.digitalocean.com/community/tutorials/how-to-rewrite-urls-with-mod_rewrite-for-apache-on-ubuntu-16-04">here can help you</a> to activate it</p>
+        
+        
+        <hr>
+        
+                <br /><br />
+        <p><strong>Enjoy ! </strong></p>
+
+        <hr>
+
+        <p>Once again, thank you so much for purchasing this CMS. As I said at the beginning, I'd be glad to help you if you have any questions relating to this CMS. No guarantees, but I'll do my best to assist. If you have a more general question relating to the CMS on CodeCanyon, you might consider visiting the forums and asking your question in the "Item Discussion" section.</p> 
+
+        
+        <p class="append-bottom alt large"><strong>Devtoo Apps</strong></p>
+        <p><a href="#toc">Go To Table of Contents</a></p>
+
+        <hr class="space">
+    </div><!-- end div .container -->
+</body>
+</html>
+
+
