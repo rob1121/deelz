@@ -393,10 +393,12 @@ $lang['store_admin_active_boost'] = "Enable boosts";
 $lang['store_admin_map_config'] = "Define the center point of the map";
 $lang['store_admin_map_latitude'] = "Latitude of the center of the map";
 $lang['store_admin_map_longitude'] = "Longitude of the center of the map";
-$lang['store_admin_map_zoom'] = "Initial Map Zoom"; 
+$lang['store_admin_map_zoom'] = "Initial Map Zoom";
 $lang['store_admin_site_name'] = "Website name";
 $lang['store_admin_delete_store'] = "Delete this store";
 $lang['store_admin_delete_store_confirm'] = "Are you sure you want to delete this shop? All its deals and previous information will be deleted.";
+$lang['store_admin_edit_category'] = "Edit a category";
+$lang['store_admin_edit_sub_category'] = "Edit a sub-category";
 
 // -- Update V1.1.0
 $lang['store_admin_popup_store'] = "Store information";

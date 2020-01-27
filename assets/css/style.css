@@ -20,6 +20,10 @@
 /* ––––––––––––––––––––––––––––––––––––––––––––– */
 /* ––––––––––––––>>> Components  <<<–––––––––––– */
 /* ––––––––––––––––––––––––––––––––––––––––––––– */
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
 .lnr {
     font-weight: bold;
 }
@@ -2084,7 +2088,7 @@
     color: #fff;
     opacity: 0.90;
     margin:0;
-    left:0; 
+    left:0;
     bottom:0;
     padding:4px;
     z-index:1000;
@@ -2120,4 +2124,21 @@
     color: #FFF;
     font-style: italic;
     text-shadow: 1px 1px #666;
+}
+
+.entry.panel,
+.row-masnory .deal-single.panel {
+    transition: all .2s;
+}
+.entry.panel:hover ,
+.row-masnory .deal-single.panel:hover  {
+    transform: scale(1.1);
+}
+
+.fixed {
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    z-index: 99;
 }

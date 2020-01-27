@@ -15,7 +15,7 @@
                             <div class="col-xs-12">
                                 <figure class="pt-10 pl-10">
                                     <img src="<?php echo base_url('assets/images/brands/' . (!empty($pro->logo) ? $pro->logo : 'boutique.png')); ?>" alt="">
-                                </figure> 
+                                </figure>
                             </div>
                             <div class="col-xs-12">
                                 <div class="store-about ptb-30 prl-10">
@@ -135,7 +135,7 @@
                                                                             <li class="like-deal" data-placement="bottom" data-toggle="tooltip" title="<?php echo ($deal->statut == 'publish') ? lang('store_admin_l11') : lang('store_admin_l12') ?>">
                                                                                 <span>
                                                                                     <?php if ($deal->statut == 'publish') : ?>
-                                                                                        <i class="fa fa-flash"></i> 
+                                                                                        <i class="fa fa-flash"></i>
                                                                                     <?php else : ?>
                                                                                         <i class="fa fa-lock"></i>
                                                                                     <?php endif; ?>
@@ -177,7 +177,7 @@
                                                                         <div class="deal-price pos-r mb-15">
                                                                             <h3 class="price ptb-5 text-right"><span class="price-sale"><?php echo $deal->price_promo > 0 ? priceToShow($deal->price_base) : ''; ?></span><?php echo $deal->price_promo > 0 ? priceToShow($deal->price_promo) : priceToShow($deal->price_base); ?></h3>
                                                                         </div>
-                                                                        <div class="text-center mb-10"> 
+                                                                        <div class="text-center mb-10">
                                                                             <?php $this->load->view('store/partial/admin_actions', array('deal' => $deal)) ?>
                                                                         </div>
                                                                     </div>
@@ -202,7 +202,7 @@
                                                 <div class="row row-masnory row-tb-20">
                                                     <?php if ($coupons) : ?>
                                                         <?php foreach ($coupons as $deal) : ?>
-                                                            <div class="col-sm-6"> 
+                                                            <div class="col-sm-6">
                                                                 <div class="coupon-single panel t-center">
                                                                     <div class="row">
                                                                         <div class="col-xs-12">
@@ -242,7 +242,7 @@
                                                                                     <a class="btn btn-sm btn-block mb-10" href="<?php echo routeDeal($deal->deal_id, $deal->title) ?>"><?php echo lang('store_admin_l18'); ?></a>
                                                                                     <div class='clear clearfix'></div>
                                                                                 </div>
-                                                                                <div class="text-center mb-10"> 
+                                                                                <div class="text-center mb-10">
                                                                                     <?php $this->load->view('store/partial/admin_actions', array('deal' => $deal)) ?>
                                                                                 </div>
                                                                             </div>
@@ -304,7 +304,7 @@
                                                                         <p class="review-date mb-5"><i class="lnr lnr-edit mr-10"></i><?php echo $deal->coupons ?> devis</p>
                                                                         <p class="review-date mb-5"><?php echo $deal->start != $deal->end ? $deal->start . ' <i class="fa fa-arrow-right"></i> ' . $deal->end : $deal->start; ?></p>
                                                                         <p class="copy"><?php echo $deal->excerpt; ?></p>
-                                                                        <div class="text-center mb-10"> 
+                                                                        <div class="text-center mb-10">
                                                                             <?php $this->load->view('store/partial/admin_actions', array('deal' => $deal)) ?>
                                                                         </div>
                                                                     </div>
@@ -509,7 +509,7 @@
                                                                     <tfoot>
                                                                         <tr class="success">
                                                                             <td colspan="2">
-                                                                                Total 
+                                                                                Total
                                                                             </td>
                                                                             <td colspan="3">
                                                                                 <?php echo priceToShow($sumSales); ?>
@@ -553,7 +553,7 @@
                                                                     <tfoot>
                                                                         <tr class="success">
                                                                             <td colspan="2">
-                                                                                <?php echo lang('store_admin_l49'); ?> 
+                                                                                <?php echo lang('store_admin_l49'); ?>
                                                                             </td>
                                                                             <td colspan="3">
                                                                                 <?php echo priceToShow($sumSales); ?>
@@ -597,7 +597,7 @@
                                                                     <tfoot>
                                                                         <tr class="success">
                                                                             <td colspan="2">
-                                                                                <?php echo lang('store_admin_l49'); ?> 
+                                                                                <?php echo lang('store_admin_l49'); ?>
                                                                             </td>
                                                                             <td colspan="3">
                                                                                 <?php echo priceToShow($sumSales); ?>
@@ -673,11 +673,11 @@
                                                                                         <strong><?php echo lang('store_admin_l58'); ?> : </strong>
                                                                                         <span>Budget : <?php echo priceToShow($deal->boost_social_amount); ?></span>
                                                                                     </div>
-                                                                                    <div class="text-center mb-10"> 
+                                                                                    <div class="text-center mb-10">
                                                                                         <?php $deal->deal_id = $deal->deals_id; ?>
                                                                                         <?php $this->load->view('store/partial/admin_actions', array('deal' => $deal)) ?>
                                                                                     </div>
-                                                                                    <div class="text-center mb-10"> 
+                                                                                    <div class="text-center mb-10">
                                                                                         <?php if ($deal->boost_social_treated == 0) : ?>
                                                                                             <a class="btn" href="<?php echo base_url('admin/boostTreated/' . $deal->boost_social_id . '/boosts_social/1') ?>"><?php echo lang('store_admin_l59'); ?></a>
                                                                                         <?php else : ?>
@@ -717,7 +717,7 @@
                                                                                         <strong><?php echo lang('store_admin_l60'); ?> : </strong>
                                                                                         <span><?php echo lang('store_admin_l61'); ?> : <?php echo $deal->boost_zotdeal_top; ?> / <?php echo lang('store_admin_l62'); ?> : <?php echo $deal->boost_zotdeal_slider; ?></span>
                                                                                     </div>
-                                                                                    <div class="text-center mb-10"> 
+                                                                                    <div class="text-center mb-10">
                                                                                         <?php $deal->deal_id = $deal->deals_id; ?>
                                                                                         <?php $this->load->view('store/partial/admin_actions', array('deal' => $deal)) ?>
                                                                                     </div>
@@ -754,7 +754,7 @@
                                                                                         <strong><?php echo lang('store_admin_l63'); ?> : </strong>
                                                                                         <span></span>
                                                                                     </div>
-                                                                                    <div class="text-center mb-10"> 
+                                                                                    <div class="text-center mb-10">
                                                                                         <?php $deal->deal_id = $deal->deals_id; ?>
                                                                                         <?php $this->load->view('store/partial/admin_actions', array('deal' => $deal)) ?>
                                                                                     </div>
@@ -862,9 +862,9 @@
                                                         <!-- ADMIN CONFIG -->
                                                         <div role="tabpanel" class="tab-pane ptb-20 <?php echo!isset($_GET['sub_tab']) || $_GET['sub_tab'] == 'admin_config' ? 'active' : '' ?>" id="admin_config">
                                                             <h3 class="text-center"><?php echo lang('store_admin_l70'); ?></h3>
-                                                   
+
                                                             <p class="text-center"><?php echo lang('store_admin_l71'); ?></p>
-                                                         
+
                                                             <form method='post' enctype='multipart/form-data' action='?tab=admin'>
                                                                 <?php if (isset($errors) || isset($error_logo)) : ?>
                                                                     <div class='alert alert-danger mt-10 mb-0'>
@@ -953,13 +953,13 @@
                                                                     <div class="custom-checkbox mb-20">
                                                                         <input type="checkbox" id="newsletter" name="active_bon-plan" value="1"  <?php echo empty($_POST['color_1']) ? ($config['active_bon-plan'] == '1' ? 'checked' : '') : (set_value('active_bon-plan') == '1' ? 'checked' : ''); ?>>
                                                                         <label class="color-mid"><?php echo lang('store_admin_l83'); ?></label>
-                                                                    </div> 
+                                                                    </div>
                                                                 </div>
                                                                 <div class="col-md-12 form-group">
                                                                     <div class="custom-checkbox mb-20">
                                                                         <input type="checkbox" id="newsletter" name="active_boost" value="1"  <?php echo empty($_POST['color_1']) ? ($config['active_boost'] == '1' ? 'checked' : '') : (set_value('active_boost') == '1' ? 'checked' : ''); ?>>
                                                                         <label class="color-mid"><?php echo lang('store_admin_active_boost'); ?></label>
-                                                                    </div> 
+                                                                    </div>
                                                                 </div>
                                                                 <!--COMMISSIONS COEF DEALS, COUPONS, QUOTATION-->
                                                                 <div class="col-xs-12 mt-30">
@@ -1109,7 +1109,7 @@
                                                                                         </li>
                                                                                     </ul>
                                                                                     <p class="copy"><?php echo $boutique->informations != lang('store_pro_l134') ? $boutique->informations : ''; ?></p>
-                                                                                    <div class="text-center mb-10"> 
+                                                                                    <div class="text-center mb-10">
                                                                                         <a href="<?php echo base_url('deals/add?pro=' . $boutique->id) ?>" class="btn btn-xs btn-info" target="_blank"><i class="fa fa-plus"></i> <?php echo lang('store_admin_l101'); ?></a>
                                                                                         <!--Update V1.1.0-->
                                                                                         <a href="#" company_id='<?php echo $boutique->id; ?>' class="btn btn-xs btn-facebook companyDatas" data-toggle="modal" data-target="#storeInformations"><i class="fa fa-eye"></i> <?php echo lang('store_admin_popup_store'); ?></a>
@@ -1187,7 +1187,7 @@
             <div class="modal-footer text-center" style="text-align: center">
                 <form method="post" action="<?php echo base_url('admin/addCategory') ?>">
                     <div class="form-group">
-                        <input type="text" class="form-control requitred" name="name" placeholder="<?php echo lang('store_admin_l106'); ?>" required />
+                        <input type="text" class="form-control required" name="name" placeholder="<?php echo lang('store_admin_l106'); ?>" required />
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control required" name="icon" placeholder="<?php echo lang('store_admin_l107'); ?>" required />
@@ -1205,6 +1205,43 @@
         </div>
     </div>
 </div>
+
+
+
+<!--MODALS-->
+<!--Edit Category-->
+<div id="edit-category"  class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><?php echo lang('store_admin_edit_category'); ?></h4>
+            </div>
+            <div class="modal-footer text-center" style="text-align: center">
+                <form method="post" action="<?php echo base_url('admin/updateCategory') ?>">
+                    <div class="form-group">
+                        <input type="text" class="form-control required" name="name" placeholder="<?php echo lang('store_admin_l106'); ?>" required />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control required" name="icon" placeholder="<?php echo lang('store_admin_l107'); ?>" required />
+                        <p class='text-right'>
+                            <a href="http://fontawesome.io/icons/" target="_blank"><?php echo lang('store_admin_l108'); ?></a>
+                        </p>
+                    </div>
+                    <div class="form-group">
+                        <a href="#" class="btn btn-facebook" data-toggle="modal" data-target="#chooseCover"><i class="fa fa-photo"></i> <?php echo lang('store_admin_l109'); ?></a>
+                    </div>
+                    <input type="hidden" class="form-control coverInput" name="image" />
+                    <input type="hidden" class="form-control" name="id" />
+                    <button class="btn" type="submit"><?php echo lang('validate'); ?></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <!--Add SubCategory-->
 <div id="add-subcategory"  class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -1227,7 +1264,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control requitred" name="name" placeholder="<?php echo lang('store_admin_l112'); ?>" required />
+                        <input type="text" class="form-control required" name="name" placeholder="<?php echo lang('store_admin_l112'); ?>" required />
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control required" name="icon" placeholder="<?php echo lang('store_admin_l113'); ?>" required />
@@ -1239,6 +1276,50 @@
                         <a href="#" class="btn btn-facebook" data-toggle="modal" data-target="#chooseCover"><i class="fa fa-photo"></i> <?php echo lang('store_admin_l115'); ?></a>
                     </div>
                     <input type="hidden" class="form-control coverInput" name="image" />
+                    <button class="btn" type="submit"><?php echo lang('validate') ?></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--Edit SubCategory-->
+<div id="edit-subcategory"  class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><?php echo lang('store_admin_edit_sub_category'); ?></h4>
+            </div>
+            <div class="modal-footer text-center" style="text-align: center">
+                <form method="post" action="<?php echo base_url('admin/updateSubCategory') ?>">
+                    <div class="form-group">
+                        <select name="category_id" class="form-control">
+                            <option value=""><?php echo lang('store_admin_l111'); ?></option>
+                            <?php if ($categories) : ?>
+                                <?php foreach ($categories as $category) : ?>
+                                    <option value="<?php echo $category->id; ?>"><?php echo $category->name; ?></option>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control required" name="name" placeholder="<?php echo lang('store_admin_l112'); ?>" required />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control required" name="icon" placeholder="<?php echo lang('store_admin_l113'); ?>" required />
+                        <p class='text-right'>
+                            <a href="http://fontawesome.io/icons/" target="_blank"><?php echo lang('store_admin_l114'); ?></a>
+                        </p>
+                    </div>
+                    <div class="form-group">
+                        <a href="#" class="btn btn-facebook" data-toggle="modal" data-target="#chooseCover"><i class="fa fa-photo"></i> <?php echo lang('store_admin_l115'); ?></a>
+                    </div>
+                    <input type="hidden" class="form-control coverInput" name="image" />
+                    <input type="hidden" class="form-control" name="id" />
                     <button class="btn" type="submit"><?php echo lang('validate') ?></button>
                 </form>
             </div>

@@ -119,7 +119,7 @@ class Admin extends CI_Controller {
      *
      * @param int $id
      */
-    public function deleteCategory($id) {
+    public function deleteCategory($id = false) {
         // TODO : Check avec codeigniter formvalidation
         if (!empty($_POST)) {
             $id = $this->input->post('category_id');
@@ -183,7 +183,6 @@ class Admin extends CI_Controller {
             redirect(base_url('store/pro?notif=error_form&tab=admin&sub_tab=admin_categories'));
         }
     }
-
     /**
      * Edit a category
      *
@@ -191,28 +190,29 @@ class Admin extends CI_Controller {
      * @param string $icon
      * @param string $image
      */
-    public function addCategory($name = false, $icon = false, $image = false) {
+    public function updateCategory($name = false, $icon = false, $image = false) {
         // TODO : Check avec codeigniter formvalidation
         if (!empty($_POST)) {
+            $id = $this->input->post('id');
             $name = $this->input->post('name');
             $icon = $this->input->post('icon');
             $image = $this->input->post('image');
         }
-
         if ($name != false && $icon != false && $image != false) {
             if (!$this->config->item('demo') || $this->config->item('auth_IP') == $_SERVER['REMOTE_ADDR']) {
-                $this->categories->add(array(
+                $this->categories->update(array(
                     'name' => $name,
                     'route' => strtolower(url_title($name)),
                     'icon' => $icon,
                     'image' => $image
-                ));
+                ), $id);
             }
             redirect(base_url('store/pro?notif=action_ok&tab=admin&sub_tab=admin_categories'));
         } else {
             redirect(base_url('store/pro?notif=error_form&tab=admin&sub_tab=admin_categories'));
         }
     }
+
 
     /**
      * Add a sub-category
@@ -239,6 +239,33 @@ class Admin extends CI_Controller {
                     'icon' => $icon,
                     'image' => $image
                 ));
+            }
+            redirect(base_url('store/pro?notif=action_ok&tab=admin&sub_tab=admin_categories'));
+        } else {
+            redirect(base_url('store/pro?notif=error_form&tab=admin&sub_tab=admin_categories'));
+        }
+    }
+
+
+    public function updateSubCategory($name = false, $icon = false, $image = false, $category_id = false) {
+        // TODO : Check avec codeigniter formvalidation
+        if (!empty($_POST)) {
+            $id = $this->input->post('id');
+            $name = $this->input->post('name');
+            $icon = $this->input->post('icon');
+            $image = $this->input->post('image');
+            $category_id = $this->input->post('category_id');
+        }
+
+        if ($name != false && $icon != false && $image != false && $category_id != '' && $category_id != false) {
+            if (!$this->config->item('demo') || $this->config->item('auth_IP') == $_SERVER['REMOTE_ADDR']) {
+                $this->sub_categories->update(array(
+                    'categories_id' => $category_id,
+                    'name' => $name,
+                    'route' => strtolower(url_title($name)),
+                    'icon' => $icon,
+                    'image' => $image
+                ), $id);
             }
             redirect(base_url('store/pro?notif=action_ok&tab=admin&sub_tab=admin_categories'));
         } else {

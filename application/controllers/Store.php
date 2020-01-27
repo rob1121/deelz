@@ -262,6 +262,7 @@ class Store extends CI_Controller {
      */
     public function pro() {
         // Loading
+
         $this->load->library('form_validation');
         $users_pro_id = $this->session->userdata('pro_id');
 
@@ -281,7 +282,7 @@ class Store extends CI_Controller {
             }
             $this->data['pro'] = $this->users_pro->getUser(array('id' => $users_pro_id));
             if ($this->data['pro']) {
-
+                $this->data['menu'] = 'store';
                 /**
                  * Change PRO infos
                  */
@@ -669,6 +670,7 @@ class Store extends CI_Controller {
                     $this->data['categories'] = $this->categories->getAll();
                     $this->data['sub_categories'] = $this->sub_categories->getAll();
                     $config_db = $this->config_db->getAll();
+
                     if ($config_db) {
                         foreach ($config_db as $conf) {
                             $configName = $conf->config_name;
@@ -684,10 +686,10 @@ class Store extends CI_Controller {
                     $this->data['orders'] = $this->orders->getForUsersPro(false);
                 }
 
-
                 $this->data['scripts_to_load'] = array('plugins/dropzone/dropzone.min', 'plugins/raphael/raphael.min', 'plugins/morris/morris.min', 'store/pro_v1.0.2' . MIN_FILE);
                 $this->data['styles_to_load'] = array('plugins/dropzone/dropzone', 'plugins/morris/morris');
                 $this->data['menu'] = 'store';
+
                 $this->template->write('title', SITE_NAME . ' | Coupons, Deals, Discounts & Online quotations');
                 if ($this->session->userdata('role') == 'admin') {
                     $this->data['scripts_to_load'][] = 'plugins/tinymce/tinymce.min';
@@ -700,6 +702,7 @@ class Store extends CI_Controller {
                     $this->template->write_view('content', 'store/pro', $this->data);
                 }
                 $this->template->render();
+                return;
             } else {
                 redirect(base_url() . '?notif=bad_store');
             }

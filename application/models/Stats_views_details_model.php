@@ -7,13 +7,13 @@ class Stats_views_details_model extends CI_Model {
 
     const PREFIX = 'stat_views_details';
 
-    private $table;  
-    
+    private $table;
+
     public function __construct() {
         parent::__construct();
         $this->table = PREFIXDB.'stats_views_details';
     }
-    
+
     /**
      * Ajout
      */
@@ -43,7 +43,7 @@ class Stats_views_details_model extends CI_Model {
 
     /**
      * Ajoute une vue
-     * 
+     *
      * @param int $deals_id
      */
     public function addView($deals_id) {
@@ -53,12 +53,12 @@ class Stats_views_details_model extends CI_Model {
             $where['users_id'] = $this->session->userdata('id');
         } else {
             $update['users_ip'] = $this->input->ip_address();
-            $where['users_ip'] = $this->input->ip_address(); 
+            $where['users_ip'] = $this->input->ip_address();
         }
         $exists = $this->db->where($where)->get($this->table);
 
         if ($exists->num_rows()) {
-            
+
             $update[self::PREFIX . '_updated_at'] = date('Y-m-d H:i:s');
             $update[self::PREFIX . '_count'] = (int)$exists->row()->stat_views_details_count+1;
             $this->db->where($where)->update($this->table, array_merge($where, $update));
@@ -69,9 +69,9 @@ class Stats_views_details_model extends CI_Model {
             $this->db->insert($this->table, array_merge($where, $update));
             $is_new_visitor = true;
         }
-        return $is_new_visitor; 
+        return $is_new_visitor;
     }
-    
+
     /**
      * Nombre de vues
      * @return type
@@ -84,7 +84,7 @@ class Stats_views_details_model extends CI_Model {
                 ->get(PREFIXDB.'deals')
                 ->num_rows();
     }
-    
+
     /**
      * Récupère les stats par jour
      * @param bool $unique
@@ -94,11 +94,17 @@ class Stats_views_details_model extends CI_Model {
         if($this->session->userdata('role') != 'admin') {
             $this->db->where(PREFIXDB.'deals.users_pro_id', $this->session->userdata('pro_id'));
         }
-        return $this->db->select(($unique == false ? 'COUNT' : 'SUM').'('.self::PREFIX.'_count) as stat_count, DAY('.self::PREFIX.'_created_at) as stat_day, '.self::PREFIX.'_created_at as stat_date')
+        $query = $this->db->select(($unique == false ? 'COUNT' : 'SUM').'('.self::PREFIX.'_count) as stat_count, DAY('.self::PREFIX.'_created_at) as stat_day, '.self::PREFIX.'_created_at as stat_date')
                 ->join(PREFIXDB.'deals', PREFIXDB.'deals.id = '.$this->table.'.deals_id')
                 ->group_by('stat_day')
                 ->order_by(self::PREFIX.'_created_at', 'asc')
-                ->get($this->table)
-                ->result();
+                ->get($this->table);
+
+
+        if($query) {
+            return $query->result();
+        } else {
+            return $query;
+        }
     }
 }

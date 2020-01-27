@@ -594,7 +594,7 @@ define('SITE_NAME', $config['admin']['site_name']);
 $config['recaptcha_key_site'] = '6Le-vNAUAAAAAOUuO4DXMjJ_1Yh2_jR4OQhITTyJ';
 $config['recaptcha_key_secret'] = '6Le-vNAUAAAAAADWXY1nQE9nti642veB2SfglK_p';
 // Google API MAP Key (active geolocation) --> https://developers.google.com/maps/documentation/javascript/get-api-key
-$config['google_map_api_key'] = '';
+$config['google_map_api_key'] = 'AIzaSyBm9aU8g7pfwIpr7nw0meB24gqbMQ8HLQs';
 
 // Sendinblue (Newsletter auto subscription) --> https://www.sendinblue.com/ (create acount and get API key)
 // To desactive module leave empty or false

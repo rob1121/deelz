@@ -77,6 +77,7 @@ class Home extends CI_Controller {
         $this->data['last_deals'] = $this->deals->getDeals(false, 8, false, 'created_at DESC', false);
         $this->data['pros'] = $this->users_pro->getAll();
 
+        $this->data['has_banner'] = true;
         $this->data['menu'] = 'home';
         $this->template->write('title', SITE_NAME.' | Coupons, Deals, Discounts & Online quotations');
         $this->template->write_view('content', 'home/index', $this->data);
@@ -92,7 +93,7 @@ class Home extends CI_Controller {
         $this->template->write_view('content', 'home/concept', $this->data);
         $this->template->render();
     }
-    
+
     /**
      * Invest Page
      */

@@ -204,7 +204,7 @@
                                                                     <li class="like-deal" data-placement="bottom" data-toggle="tooltip" title="<?php echo ($deal->statut == 'publish') ? lang('store_pro_l14') : lang('store_pro_l15') ?>">
                                                                         <span>
                                                                             <?php if ($deal->statut == 'publish') : ?>
-                                                                                <i class="fa fa-flash"></i> 
+                                                                                <i class="fa fa-flash"></i>
                                                                             <?php else : ?>
                                                                                 <i class="fa fa-lock"></i>
                                                                             <?php endif; ?>
@@ -636,7 +636,7 @@
                                                             <input type='hidden' name='boost_target' value='1' />
                                                         </p>
                                                         <h4 class='text-center mt-30 mb-30'><?php echo lang('store_pro_l105'); ?></h4>
-                                                        <p> 
+                                                        <p>
                                                             <?php echo lang('store_pro_l106'); ?>
                                                         </p>
                                                         <p class='text-center mtb-20'>
@@ -714,7 +714,7 @@
                                                         <p>
                                                             <?php echo lang('store_pro_l121'); ?>
                                                         </p>
-                                                        <p> 
+                                                        <p>
                                                             <select class="form-control input-lg search-select" name="boost_top" id='boost_top'>
                                                                 <option value='0'>0 <?php echo lang('store_pro_l122'); ?></option>
                                                                 <option value='1'>1 <?php echo lang('store_pro_l122'); ?></option>
@@ -731,7 +731,7 @@
                                                             <?php echo lang('store_pro_l124'); ?>
                                                         </p>
                                                         <p class='text-center mtb-20'>
-                                                            <select class="form-control input-lg search-select" name="boost_slider" id='boost_slider'> 
+                                                            <select class="form-control input-lg search-select" name="boost_slider" id='boost_slider'>
                                                                 <option value='0'>0 <?php echo lang('store_pro_l122'); ?></option>
                                                                 <option value='1'>1 <?php echo lang('store_pro_l122'); ?></option>
                                                                 <option value='2'>2 <?php echo lang('store_pro_l122'); ?></option>
@@ -783,7 +783,7 @@
                                                 <div class="row row-tb-30">
                                                     <div class="col-xs-12">
                                                         <div class="col-md-12 form-group">
-                                                            <label for="exampleInputFile"><?php echo lang('store_pro_l129'); ?></label> 
+                                                            <label for="exampleInputFile"><?php echo lang('store_pro_l129'); ?></label>
                                                             <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" name='logo'>
                                                             <?php if (isset($this->config->item('admin')['active_boost']) && $this->config->item('admin')['active_boost'] == 1) : ?>
                                                                 <small id="fileHelp" class="form-text text-muted"><?php echo lang('store_pro_l130'); ?></small>

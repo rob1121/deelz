@@ -1,80 +1,15 @@
 <main id="mainContent" class="main-content">
     <div class="page-container ptb-10">
         <div class="container">
-            <div class="section deals-header-area ptb-30">
-                <div class="row row-tb-20">
-                    <!--CATEGORIES-->
-                    <div class="col-xs-12 col-md-4 col-lg-3 hidden-xs hidden-sm">
-                        <aside>
-                            <?php $this->load->view('partial/categories', array('class' => 'nav-coupon-category panel', 'show_icons' => true, 'show_count' => false)); ?>
-                            <a href='<?php echo base_url('deals/search?search=&city=0') ?>' class='btn btn-xs mt-10 btn-block'><i class='fa fa-list'></i> <?php echo $this->lang->line('all_deals'); ?></a>
-                        </aside>
-                    </div>
-
-                    <!--SLIDER-->
-                    <div class="col-xs-12 col-md-8 col-lg-9">
-                        <div class="header-deals-slider owl-slider" data-loop="true" data-autoplay="true" data-autoplay-timeout="10000" data-smart-speed="1000" data-nav-speed="false" data-nav="true" data-xxs-items="1" data-xxs-nav="true" data-xs-items="1" data-xs-nav="true" data-sm-items="1" data-sm-nav="true" data-md-items="1" data-md-nav="true" data-lg-items="1" data-lg-nav="true">
-                            <?php if ($deals_slider) : ?>
-                                <?php foreach ($deals_slider as $deal) : ?>
-                                    <div class="deal-single panel item">
-                                        <figure class="deal-thumbnail embed-responsive embed-responsive-16by9 cursor-pointer" data-bg-img="<?php echo base_url('assets/images/' . $deal->cover); ?>">
-                                            <div class='hover-img-link' onclick='window.location.href = "<?php echo routeDeal($deal->deal_id, $deal->title); ?>"'></div>
-                                            <div class='hover-img-link-right' onclick='window.location.href = "<?php echo routeDeal($deal->deal_id, $deal->title); ?>"'></div>
-                                            <?php if ($deal->promo_discount > 0) : ?>
-                                                <div class="label-discount top-10 right-10">-<?php echo $deal->promo_discount; ?>%</div>
-                                            <?php endif; ?>
-                                            <?php $this->load->view('deals/partial/actions', array('deal_id' => $deal->deal_id, 'position' => 'left-20', 'deal_link' => routeDeal($deal->deal_id, $deal->title))); ?>
-                                            <h3 class='deal-title mt-10 color-white text-center'><i class="ico fa <?php echo getDealTypeIcon($deal->type_deal); ?> mr-10"></i><?php echo getDealType($deal->type_deal); ?></h3>
-                                            <div class="deal-store-logo mb-30 hidden-xs">
-                                                <a title="<?php echo $deal->company; ?>" data-toggle="tooltip" href="<?php echo base_url('boutique/' . strtolower(url_title($deal->company) . '/' . $deal->pro_id)) ?>"><img src="<?php echo base_url('assets/images/brands/' . (!empty($deal->logo) ? $deal->logo : 'boutique.png')); ?>" alt=""></a>
-                                            </div>
-                                            <div class="deal-about p-10 pos-a bottom-0 left-0">
-
-
-                                                <div class="color-white mt-10">
-                                                    <h3 class="deal-title">
-                                                        <a href="<?php routeDeal($deal->id, $deal->title) ?>" class="color-light color-h-lighter"><?php echo $deal->title; ?> <!--<small class="color-white">- <i class='<?php echo getDealTypeIcon($deal->type_deal); ?> mr-5'></i></span><span class='deal-title'><?php echo getDealType($deal->type_deal); ?></small>--></a>
-                                                        <span class='color-white ml-10'><span class="price-sale"><?php echo $deal->price_promo > 0 ? priceToShow($deal->price_base) : ''; ?></span><?php echo $deal->price_promo > 0 ? priceToShow($deal->price_promo) : ($deal->price_base > 0 ? priceToShow($deal->price_base) : ($deal->price_type == 'quotation' ? 'Sur devis' : 'GRATUIT')); ?></span>
-                                                    </h3>
-                                                    <span class='hidden-lg hidden-md hidden-sm'>
-                                                        <i class="ico fa fa-clock-o mr-10"></i>
-                                                        <span class="deal-title t-uppercase" data-countdown="<?php echo dateBDD_to_FR($deal->end, 3, false, true, true) ?>"></span>
-                                                    </span>
-                                                    <span class='deal-title'></span>
-                                                </div> 
-                                            </div>
-
-                                            <div class="time-left bottom-15 right-20 font-md-14 hidden-xs">
-                                                <span>
-                                                    <i class="ico fa fa-clock-o mr-10"></i>
-                                                    <span class="deal-title t-uppercase" data-countdown="<?php echo dateBDD_to_FR($deal->end, 3, false, true, true) ?>"></span>
-                                                </span>
-                                            </div>
-                                        </figure>
-                                    </div>
-                                <?php endforeach; ?>
-                            <?php endif; ?>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-md-4 col-lg-3 hidden-lg hidden-md">
-                        <h1 class="hidden-xs"><?php echo $this->lang->line('home_line_1'); ?></h1>
-                        <h3 class="hidden-lg hidden-md hidden-sm"><?php echo $this->lang->line('home_line_2'); ?></h3>
-                        <aside class='mt-20'>
-                            <?php $this->load->view('partial/categories', array('class' => 'nav-coupon-category panel', 'show_icons' => true, 'show_count' => false)); ?>
-                        </aside>
-                    </div>
-                </div>
-            </div>
-
             <!--VIDEO / IMAGE MODULE-->
-            <section class="section latest-news-area blog-area blog-grid blog-3-col ptb-30">
+            <section class="section latest-news-area blog-area blog-grid blog-3-col ptb-30" data-aos="fade-up">
                 <header class="panel ptb-15 prl-20 pos-r mb-30">
                     <h3 class="section-title font-18"><?php echo $this->lang->line('more_infos'); ?></h3>
                 </header>
 
                 <div class="row row-tb-20">
                     <div class="blog-post col-xs-12 col-sm-6 col-md-4">
-                        <article class="entry panel">
+                        <article class="entry panel" >
                             <figure class="entry-media embed-responsive embed-responsive-16by9">
                                 <iframe src="<?php echo $this->lang->line('more_infos_video_1'); ?>" webkitallowfullscreen mozallowfullscreen allowfullscreen  style='border:none'></iframe>
                             </figure>
@@ -137,7 +72,7 @@
             </section>
 
             <!--A LA UNE MODULE-->
-            <section class="section latest-deals-area ptb-30">
+            <section class="section latest-deals-area ptb-30" data-aos="fade-up">
                 <header class="panel ptb-15 prl-20 pos-r mb-30">
                     <h3 class="section-title font-18"><?php echo $this->lang->line('a_la_une'); ?></h3>
                 </header>
@@ -187,7 +122,7 @@
             </section>
 
             <!--HOW IT WORKS MODULE-->
-            <section class="section latest-coupons-area ptb-30">
+            <section class="section latest-coupons-area ptb-30" data-aos="fade-up">
                 <header class="panel ptb-15 prl-20 pos-r mb-30">
                     <h3 class="section-title font-18"><?php echo $this->lang->line('explain_title'); ?></h3>
                 </header>
@@ -242,7 +177,7 @@
 
 
             <!--LAST DEALS MODULE-->
-            <section class="section latest-coupons-area ptb-30">
+            <section class="section latest-coupons-area ptb-30" data-aos="fade-up">
                 <header class="panel ptb-15 prl-20 pos-r mb-30">
                     <h3 class="section-title font-18"><?php echo $this->lang->line('last_deals'); ?></h3>
                     <a href="<?php echo base_url('deals/search?search=&city=0') ?>" class="btn btn-o btn-xs pos-a right-10 pos-tb-center"><?php echo $this->lang->line('last_deals'); ?></a>
@@ -297,7 +232,7 @@
             </section>
 
             <!--STORES MODULE-->
-            <section class="section stores-area stores-area-v1 ptb-30">
+            <section class="section stores-area stores-area-v1 ptb-30" data-aos="fade-up">
                 <header class="panel ptb-15 prl-20 pos-r mb-30">
                     <h3 class="section-title font-18"><?php echo $this->lang->line('all_stores'); ?></h3>
                     <a href="<?php echo base_url('les-commerces'); ?>" class="btn btn-o btn-xs pos-a right-10 pos-tb-center hidden-xs"><?php echo $this->lang->line('show_all_stores'); ?></a>
@@ -325,7 +260,7 @@
 
             <!--NEWSLETTER MODULE-->
             <?php if ($this->config->item('key_sendinblue') != '' && $this->config->item('key_sendinblue') != 'false') : ?>
-                <section class="section subscribe-area ptb-40 t-center">
+                <section class="section subscribe-area ptb-40 t-center" data-aos="fade-up">
                     <div class="newsletter-form">
                         <h4 class="mb-20"><i class="fa fa-envelope-o color-green mr-10"></i><?php echo $this->lang->line('newsletter_subscribe'); ?></h4>
                         <p class="mb-20 color-mid"><?php echo $this->lang->line('newsletter_line_1'); ?></p>

@@ -45,12 +45,14 @@
         <!-- ––––––––––––––––––––––––––––––––––––––––– -->
         <!-- GOOGLE FONTS                              -->
         <!-- ––––––––––––––––––––––––––––––––––––––––– -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600" rel="stylesheet">
 
         <!-- ––––––––––––––––––––––––––––––––––––––––– -->
         <!-- Include CSS Filess                        -->
         <!-- ––––––––––––––––––––––––––––––––––––––––– -->
 
+		<link href="<?php echo base_url(); ?>assets/css/normalize.css" rel="stylesheet">
         <!-- Bootstrap -->
         <link href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" rel="stylesheet">
 
@@ -66,7 +68,7 @@
 
         <!-- Flex Slider -->
         <link href="<?php echo base_url(); ?>assets/vendors/flexslider/flexslider.css" rel="stylesheet">
-
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
         <!-- Template Stylesheet -->
         <style type="text/css">
             :root {
@@ -76,9 +78,11 @@
                 --color_4: #<?php echo $this->config->item('admin')['color_4']; ?>;
             }
         </style>
+		<link href="<?php echo base_url(); ?>assets/css/demo.css" rel="stylesheet">
+		<link href="<?php echo base_url(); ?>assets/css/component.css" rel="stylesheet">
+
         <link href="<?php echo base_url(); ?>assets/css/base_v1.0.1.css" rel="stylesheet">
         <link href="<?php echo base_url(); ?>assets/css/style.css" rel="stylesheet">
-
         <!-- ReCaptcha Google -->
         <script src='https://www.google.com/recaptcha/api.js'></script>
     </head>
@@ -115,6 +119,10 @@
         <!-- WRAPPER                                   -->
         <!-- ––––––––––––––––––––––––––––––––––––––––– -->
         <div id="pageWrapper" class="page-wrapper">
+
+            <?php if (isset($has_banner)) : ?>
+                <?php $this->load->view('partial/banner'); ?>
+            <?php endif; ?>
             <?php if (!isset($no_header)) : ?>
                 <?php $this->load->view('partial/header'); ?>
             <?php endif; ?>
@@ -178,9 +186,35 @@
         <!-- ––––––––––––––––––––––––––––––––––––––––– -->
         <!-- Custom Template JavaScript                   -->
         <!-- ––––––––––––––––––––––––––––––––––––––––– -->
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/main_v1.1.0<?php echo MIN_FILE; ?>.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/custom/partial/header<?php echo MIN_FILE; ?>.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/custom/deals/favorites<?php echo MIN_FILE; ?>.js"></script>
+		<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/classie.js"></script>
+		<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/dynamics.min.js"></script>
+		<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/main.js"></script>
+		<script>
+			(function() {
+				document.documentElement.className = 'js';
+				var slideshow = new CircleSlideshow(document.getElementById('slideshow'));
+
+                AOS.init({
+                    delay: 500,
+                    duration: 500,
+                    once: true
+                });
+
+                var stickyOffset = $('.header-menu').offset().top;
+
+                $(window).scroll(function(){
+                var sticky = $('.header-menu'),
+                    scroll = $(window).scrollTop();
+
+                if (scroll >= stickyOffset) sticky.addClass('fixed');
+                else sticky.removeClass('fixed');
+                });
+			})();
+        </script>
         <!-- Confirmation cookies -->
         <?php $this->load->view('scripts/cookies_banner'); ?>
         <!-- Google Map -->
@@ -199,7 +233,7 @@
                 <?php
             endforeach;
         endif;
-        ?> 
+        ?>
         <?php
         // JS PROPRE A LA PAGE
         if (isset($scripts_to_load)) :

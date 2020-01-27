@@ -3,8 +3,8 @@
     <?php if (strpos($_SERVER['SERVER_NAME'], 'dev.zotdeal.re')) : ?>
         <div class='col-md-12' style='position: fixed; bottom: 0;left: 0;width: 100%;height: 60px;z-index:2000'>
             <div class='alert alert-success text-center' style="background-color: #<?php echo $this->config->item('admin')['color_1']; ?>; border-color:#<?php echo $this->config->item('admin')['color_1']; ?>; color:#FFF">
-                <i class="fa fa-exclamation-triangle"></i> #GeekZone ! 
-            </div> 
+                <i class="fa fa-exclamation-triangle"></i> #GeekZone !
+            </div>
         </div>
     <?php endif; ?>
     <!-- Top Bar -->
@@ -44,7 +44,7 @@
                                 <li class="hidden-xs"><a href="<?php echo base_url('deals/add') ?>"><i class="fa fa-building"></i><?php echo $this->lang->line('pro_signup'); ?></a>
                                 </li>
                             <?php endif; ?>
-                        <?php endif; ?> 
+                        <?php endif; ?>
                     </ul>
                 </div>
             </div>
@@ -98,7 +98,7 @@
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>
         </div>
     </div>
     <!-- End Header Header -->
@@ -112,7 +112,7 @@
                         <i></i>
                         <i></i>
                         <i></i>
-                    </span>      
+                    </span>
                 </div>
                 <div id="header-navbar" class="nav-collapse">
                     <ul class="nav-menu">
@@ -146,9 +146,9 @@
                                             </div>
                                         <?php endforeach; ?>
                                     <?php endif; ?>
-                                </div> 
+                                </div>
                             </div>
-                        </li> 
+                        </li>
                         <li <?php echo isset($menu) && $menu == 'store' ? 'class="active"' : '' ?>><a href="<?php echo base_url('les-commerces') ?>"><?php echo $this->lang->line('menu_network'); ?></a>
                         <li <?php echo isset($menu) && $menu == 'concept' ? 'class="active"' : '' ?>><a href="<?php echo base_url('comment-ca-marche') ?>"><?php echo $this->lang->line('menu_about'); ?></a>
                     </ul>

@@ -5,13 +5,13 @@ if (!defined('BASEPATH'))
 
 class Categories_model extends CI_Model {
 
-    private $table;  
-    
+    private $table;
+
     public function __construct() {
         parent::__construct();
         $this->table = PREFIXDB.'categories';
     }
-    
+
     /**
      * Ajout d'une catégorie
      */
@@ -19,12 +19,20 @@ class Categories_model extends CI_Model {
         $datas = array_merge($datas, array(
             'created_at' => date('Y-m-d H:i:s')
         ));
-        
+
         $this->db->insert($this->table, $datas);
-        
+
         return $this->db->insert_id();
     }
-    
+
+    public function update($datas, $id) {
+        $datas = array_merge($datas, array(
+            'updated_at' => date('Y-m-d H:i:s')
+        ));
+
+        return $this->db->where('id', $id)->update($this->table, $datas);
+    }
+
     /**
      * Delete
      */
@@ -33,17 +41,17 @@ class Categories_model extends CI_Model {
         // Delete sub_categories
         $this->sub_categories->deleteCategory($id);
     }
-    
+
     /**
      * Récupère toutes les catégories
      */
     public function getAll() {
         return $this->db->get($this->table)->result();
     }
-    
+
     /**
      * Infos d'une category
-     * 
+     *
      * @param int $category_id
      * @return type
      */
